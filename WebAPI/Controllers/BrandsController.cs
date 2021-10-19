@@ -11,11 +11,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandsContorller : ControllerBase
+    public class BrandsController : ControllerBase
     {
         IBrandService _brandService;
 
-        public BrandsContorller(IBrandService brandService)
+        public BrandsController(IBrandService brandService)
         {
             _brandService = brandService;
 
@@ -50,7 +50,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpGet("add")]
+        [HttpPost("add")]
         public IActionResult Add(Brand brand)
         {
             var result = _brandService.Add(brand);
@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
 
 
         }
-        [HttpGet("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Brand brand)
         {
             var result = _brandService.Delete(brand);
@@ -75,7 +75,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpGet("update")]
+        [HttpPost("update")]
         public IActionResult Update(Brand brand)
         {
             var result = _brandService.Update(brand);
