@@ -32,5 +32,8 @@ namespace Business.Contants
         public static string RentDeleted = "Kiralama işlemi silindi";
         public static string RentalUpdated = "Kiralama bilgileri güncellendi";
         public static string CarNotReturned = "Kiralanan araç henüz geri dönmedi";
+        internal static string ImageLimitError = "Görsel ekelem limiti doldu";
+        internal static string ImageAdded = "Görsel eklendi";
+        internal static string ImageUploadError = "Görsel yükleme başarısız";
     }
 }
