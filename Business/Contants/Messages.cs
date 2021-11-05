@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,8 +33,15 @@ namespace Business.Contants
         public static string RentDeleted = "Kiralama işlemi silindi";
         public static string RentalUpdated = "Kiralama bilgileri güncellendi";
         public static string CarNotReturned = "Kiralanan araç henüz geri dönmedi";
-        internal static string ImageLimitError = "Görsel ekelem limiti doldu";
-        internal static string ImageAdded = "Görsel eklendi";
-        internal static string ImageUploadError = "Görsel yükleme başarısız";
+        public static string ImageLimitError = "Görsel ekelem limiti doldu";
+        public static string ImageAdded = "Görsel eklendi";
+        public static string ImageUploadError = "Görsel yükleme başarısız";
+        public static string UserJWTAdded = "Kullanıcı eklendi";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Hatalı şifre";
+        public static string SuccessfulLogin = "Giriş başarılı";
+        public static string UserAlreadyExists="Kullanıcı zaten kayıtlı";
+        public static string UserRegistered="Kullanıcı eklendi";
+        public static string AccessTokenCreated="AccesToken başarıyla oluşturuldu";
     }
 }

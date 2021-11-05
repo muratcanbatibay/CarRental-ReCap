@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
+        [Authorize()]
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
@@ -78,7 +80,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
+        [Authorize()]
         [HttpPost("add")]
         public IActionResult Add(Car car)
         {
