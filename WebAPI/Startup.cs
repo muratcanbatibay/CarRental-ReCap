@@ -45,7 +45,7 @@ namespace WebAPI
                     builder => builder.WithOrigins("http://localhost:44305"));
             });
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
             
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
