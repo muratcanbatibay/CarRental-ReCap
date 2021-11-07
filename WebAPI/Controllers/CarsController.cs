@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        [Authorize()]
+      //  [Authorize()]
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
@@ -80,7 +80,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [Authorize()]
+        //[Authorize()]
         [HttpPost("add")]
         public IActionResult Add(Car car)
         {
