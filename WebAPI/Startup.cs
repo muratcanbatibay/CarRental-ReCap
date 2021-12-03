@@ -39,11 +39,10 @@ namespace WebAPI
 
             services.AddControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:44305"));
-            });
+            services.AddCors();
+            
+               
+            
 
             
             
@@ -87,7 +86,7 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
-            app.UseCors(builder => builder.WithOrigins("http://localhost:44305").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
            
             app.UseHttpsRedirection();
 
@@ -98,6 +97,8 @@ namespace WebAPI
             app.UseAuthorization();
            
             app.UseAuthentication();
+
+            app.UseStaticFiles();
           
             app.UseEndpoints(endpoints =>
             {

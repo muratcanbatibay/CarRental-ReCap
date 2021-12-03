@@ -24,6 +24,8 @@ namespace DataAccess.Concrete
                              on c.BrandId equals b.BrandId
                              join co in context.Colors
                              on c.ColorId equals co.ColorId
+                             join i in context.CarImages
+                             on c.CarId equals i.CarId
 
 
                              select new CarDetailDto
@@ -32,7 +34,8 @@ namespace DataAccess.Concrete
                                  BrandId = b.BrandId,
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,
-                                 CarName = c.CarName
+                                 CarName = c.CarName,
+                                 CarId=i.CarId
                              };
 
 

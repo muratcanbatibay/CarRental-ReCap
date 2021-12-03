@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -25,6 +26,8 @@ namespace WebAPI.Controllers
       //  [Authorize()]
         public IActionResult GetAll()
         {
+            Thread.Sleep(1000);
+
             var result = _carService.GetAll();
             if (result.Success)
             {
@@ -66,6 +69,19 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+        [HttpGet("getbycarimages")]
+        public IActionResult GetByCarImages(int carId)
+        {
+
+            var result = _carService.GetByCarImages(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
 
         [HttpGet("getcardetails")]
         public IActionResult GetCarDetails()
