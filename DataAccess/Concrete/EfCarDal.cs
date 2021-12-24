@@ -13,7 +13,7 @@ namespace DataAccess.Concrete
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentalCarContext>, ICarDal
     {
-
+       
 
         public List<CarDetailDto> GetCarDetails()
         {
@@ -26,7 +26,9 @@ namespace DataAccess.Concrete
                              on c.ColorId equals co.ColorId
                              join i in context.CarImages
                              on c.CarId equals i.CarId
-
+                             
+                             
+                             
 
                              select new CarDetailDto
                              {
@@ -35,14 +37,22 @@ namespace DataAccess.Concrete
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,
                                  CarName = c.CarName,
-                                 CarId=i.CarId
+                                 CarId=c.CarId,
+                                 ImagePath=i.ImagePath
                              };
 
-
                 return result.ToList();
+                
             }
+            
+        }
+          
+
         }
 
 
     }
-}
+
+
+    
+

@@ -50,6 +50,13 @@ namespace Business.Concrete
             _imageDal.Update(carImage);
             return new SuccessResult();
         }
+        private IDataResult<List<Image>> GetDefaultImage(int carId)
+        {
+
+            List<Image> carImage = new List<Image>();
+            carImage.Add(new Image { CarId = carId, Date = DateTime.Now, ImagePath = "3f0b41a7-0da9-4ead-bd35-fa438ae325f5.jfif" });
+            return new SuccessDataResult<List<Image>>(carImage);
+        }
 
         public IDataResult<List<Image>> GetByCarId(int carId)
         {
@@ -63,7 +70,7 @@ namespace Business.Concrete
 
         public IDataResult<Image> GetByImageId(int imageId)
         {
-            return new SuccessDataResult<Image>(_imageDal.Get(c => c.CarId == imageId));
+            return new SuccessDataResult<Image>(_imageDal.Get(c => c.ImageId== imageId));
         }
 
         public IDataResult<List<Image>> GetAll()
@@ -79,13 +86,7 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-        private IDataResult<List<Image>> GetDefaultImage(int carId)
-        {
-
-            List<Image> carImage = new List<Image>();
-            carImage.Add(new Image { CarId = carId, Date = DateTime.Now, ImagePath = "DefaultImage.jpg" });
-            return new SuccessDataResult<List<Image>>(carImage);
-        }
+       
         private IResult CheckCarImage(int carId)
         {
             var result = _imageDal.GetAll(c => c.CarId == carId).Count;

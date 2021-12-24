@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Contants;
 using Core.DependencyResolvers;
 //using Core.DependencyResolvers;
 using Core.Extensions;
@@ -86,13 +87,13 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
-            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+            app.ConfigureCustomExceptionMiddleware();
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200","http://localhost:44305").AllowAnyHeader());
            
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-         
-            app.UseStaticFiles();
+            app.UseRouting();        
 
             app.UseAuthorization();
            

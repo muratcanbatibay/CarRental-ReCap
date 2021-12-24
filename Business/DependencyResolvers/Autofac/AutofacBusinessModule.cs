@@ -38,7 +38,8 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<FileHelper>().As<IFileHelper>().SingleInstance();
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JWTHelper>().As<ITokenHelper>().SingleInstance();
-
+            builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>().SingleInstance();
+            builder.RegisterType<CreditCardManager>().As<ICreditCardService>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

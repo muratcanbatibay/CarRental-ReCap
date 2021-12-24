@@ -11,31 +11,20 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RentalsController : ControllerBase
+    public class CreditCardsController : ControllerBase
     {
-        IRentalService _rentalService;
-        public RentalsController(IRentalService rentalService)
-        {
-            _rentalService = rentalService;
+        ICreditCardService _creditCardService;
 
+        public CreditCardsController(ICreditCardService creditCardService)
+        {
+            _creditCardService = creditCardService;
         }
 
-        [HttpGet("getall")]
-        public IActionResult GetAll()
+        
+        [HttpPost("addtocard")]
+        public IActionResult Add(CreditCard card)
         {
-            var result = _rentalService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-
-            }
-            return BadRequest(result);
-
-        }
-        [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
-        {
-            var result = _rentalService.GetById(id);
+            var result = _creditCardService.Add(card);
             if (result.Success)
             {
                 return Ok(result);
@@ -43,43 +32,11 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getrentaldetails")]
-        public IActionResult GetRentalDetails()
-        {
-            var result = _rentalService.GetRentalDetails();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-        [HttpPost("add")]
 
-        public IActionResult Add(Rental rental)
+        [HttpPost("deletetocard")]
+        public IActionResult Delete(CreditCard card)
         {
-            var result = _rentalService.Add(rental);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-        [HttpPost("delete")]
-        public IActionResult Delete(Rental rental)
-        {
-            var result = _rentalService.Delete(rental);
-            if (result.Success)
-            {
-                return Ok(result);
-
-            }
-            return BadRequest(result);
-
-        }
-        [HttpPost("update")]
-        public IActionResult Update(Rental rental)
-        {
-            var result = _rentalService.Update(rental);
+            var result = _creditCardService.Delete(card);
             if (result.Success)
             {
                 return Ok(result);
@@ -87,5 +44,65 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpPost("updatetocard")]
+        public IActionResult Update(CreditCard card)
+        {
+            var result = _creditCardService.Update(card);
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+            return BadRequest(result);
+        }
+
+       
+
+        [HttpGet("getalldetails")]
+        public IActionResult GetAllDetails()
+        {
+            var result = _creditCardService.GetAllDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+
+
+
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyname")]
+        public IActionResult GetByCardName(string firstName, string lastName)
+        {
+            var result = _creditCardService.GetByCardName(firstName,lastName);
+            if (result.Success)
+            {
+                return Ok(result);
+
+
+
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbynumber")]
+        public IActionResult GetByCardNumber(string cardNumber)
+        {
+            var result = _creditCardService.GetByCardNumber(cardNumber);
+            if (result.Success)
+            {
+                return Ok(result);
+
+
+
+            }
+            return BadRequest(result);
+        }
+
+      
+
+
     }
 }

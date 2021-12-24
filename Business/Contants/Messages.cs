@@ -43,5 +43,9 @@ namespace Business.Contants
         public static string UserAlreadyExists="Kullanıcı zaten kayıtlı";
         public static string UserRegistered="Kullanıcı eklendi";
         public static string AccessTokenCreated="AccesToken başarıyla oluşturuldu";
+        public static string CardAdded="Kart Başarıyla Eklendi";
+        public static string CardDeleted="Kart Silindi";
+        public static string CardUpdated="Kart Güncellendi";
+        public static string CardLengthError="Kart Numaranız Eksik";
     }
 }
